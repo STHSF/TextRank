@@ -1,5 +1,3 @@
-# TextRank
-
 ## 关于自动文摘
 
 利用计算机将大量的文本进行处理，产生简洁、精炼内容的过程就是文本摘要，人们可通过阅读摘要来把握文本主要内容，这不仅大大节省时间，更提高阅读效率。但人工摘要耗时又耗力，已不能满足日益增长的信息需求，因此借助计算机进行文本处理的自动文摘应运而生。近年来，自动文摘、信息检索、信息过滤、机器识别、等研究已成为了人们关注的热点。
@@ -33,7 +31,7 @@ Mihalcea R, Tarau P. TextRank: Bringing order into texts[C]. Association for Com
 PageRank最开始用来计算网页的重要性。整个www可以看作一张有向图图，节点是网页。如果网页A存在到网页B的链接，那么有一条从网页A指向网页B的有向边。
 
 构造完图后，使用下面的公式：
-![pr值计算公式](/Users/li/Desktop/u6jaIzY.png)
+![pr值计算公式](http://od6jpuxvb.bkt.clouddn.com/u6jaIzY.png)
 S(Vi)是网页i的中重要性（PR值）。d是阻尼系数，一般设置为0.85。In(Vi)是存在指向网页i的链接的网页集合。Out(Vj)是网页j中的链接存在的链接指向的网页的集合。|Out(Vj)|是集合中元素的个数。
 
 PageRank需要使用上面的公式多次迭代才能得到结果。初始时，可以设置每个网页的重要性为1。上面公式等号左边计算的结果是迭代后网页i的PR值，等号右边用到的PR值全是迭代前的。
@@ -44,9 +42,9 @@ PageRank需要使用上面的公式多次迭代才能得到结果。初始时，
 
 1、把给定的文本T按照完整句子进行分割，即
 
-![](/Users/li/Desktop/GJJp0dC+Iu3nuQnt95RllXzy3V5AAAAABJRU5ErkJggg==.png)
+![](http://od6jpuxvb.bkt.clouddn.com/GJJp0dC+Iu3nuQnt95RllXzy3V5AAAAABJRU5ErkJggg==.png)
 
-2、对于每个句子![](/Users/li/Desktop/YtRBAzUQPjHVjQv3z50sjICMhubGwk1kF1YIBVaUZGBjBnYYp7gAEuCyBg9uzZ+BXgdBAecPHiRScnJ+LVkwdIc1BRURHtnAIBpDkImLrnzZtHO9cwkOSgFy9e0M4dcDDoGmgA9CATy1d+XhEAAAAASUVORK5CYII=.png)，进行分词和词性标注处理，并过滤掉停用词，只保留指定词性的单词，如名词、动词、形容词，即![](/Users/li/Desktop/wdRhSHL8S992WFn2WXCWwAAAABJRU5ErkJggg==.png)，其中![](/Users/li/Desktop/YsQNYxOAq4SkEuAwnof0KrAZnzZoFZKioqABbqIsXL6amA2EAj+EAEJBIFUFDdeoAAAAASUVORK5CYII=.png)是保留后的候选关键词。
+  2、对于每个句子![](http://od6jpuxvb.bkt.clouddn.com/YtRBAzUQPjHVjQv3z50sjICMhubGwk1kF1YIBVaUZGBjBnYYp7gAEuCyBg9uzZ+BXgdBAecPHiRScnJ+LVkwdIc1BRURHtnAIBpDkImLrnzZtHO9cwkOSgFy9e0M4dcDDoGmgA9CATy1d+XhEAAAAASUVORK5CYII=.png)，进行分词和词性标注处理，并过滤掉停用词，只保留指定词性的单词，如名词、动词、形容词，即![](http://od6jpuxvb.bkt.clouddn.com/wdRhSHL8S992WFn2WXCWwAAAABJRU5ErkJggg==.png)，其中![](http://od6jpuxvb.bkt.clouddn.com/YsQNYxOAq4SkEuAwnof0KrAZnzZoFZKioqABbqIsXL6amA2EAj+EAEJBIFUFDdeoAAAAASUVORK5CYII=.png)是保留后的候选关键词。
 
 3、构建候选关键词图G = (V,E)，其中V为节点集，由（2）生成的候选关键词组成，然后采用共现关系（co-occurrence）构造任两点之间的边，两个节点之间存在边仅当它们对应的词汇在长度为K的窗口中共现，K表示窗口大小，即最多共现K个单词。
 
@@ -64,12 +62,20 @@ PageRank需要使用上面的公式多次迭代才能得到结果。初始时，
 
 支持向量机.
 
-## TextRank的scala实现
+## [TextRank的scala实现](https://github.com/STHSF/nlp/tree/develop/scala/nlpsuit/src/main/scala/com/kunyandata/nlpsuit/wordExtraction)
 
+程序步骤：
+
+1、**文章分词：** 对每一篇文章进行分词，分词系统主要由坤雁分词系统、ansj分词，结巴分词等。
+
+2、**分词结果数据清洗：** 主要包括去停用词、去除符号字母数字等。
+
+3、**构建候选关键词图：** 根据设定的词语选择窗口截取文本的分词结果，将每个词语作为候选关键词图的节点，截取的每一段文本中的词语作为相邻的边，以此构建候选关键词图。
+4、**关键词提取：** 利用pagerank思想循环迭代候选关键词图，
 
 
 ## 参考文献
- * David Adamo： [TextRank](https://github.com/davidadamojr/TextRank)
+ * David Adamo: [TextRank](https://github.com/davidadamojr/TextRank)
  * [Automatic Summarization](https://en.wikipedia.org/wiki/Automatic_summarization)
  * [TextRank](http://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf)
  * [PageRank](http://ilpubs.stanford.edu:8090/422/1/1999-66.pdf)
