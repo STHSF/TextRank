@@ -21,7 +21,7 @@ object KeywordExtractor {
     */
   def keywordGraphConstruction(graphName: String,
                                window: Int,
-                               segWord: ListBuffer[String]): SingleGraph = {
+                               segWord: List[String]): SingleGraph = {
 
     val graph = new SingleGraph(graphName)
 
@@ -135,7 +135,7 @@ object KeywordExtractor {
     * @param df 阻尼系数
     * @return 关键词, 得分
     */
-  def run(graphName: String, window: Int, doc: ListBuffer[String],
+  def run(graphName: String, window: Int, doc: List[String],
           keywordNum: Int, iterator: Int, df: Float): List[(String, Float)] = {
 
     // 生成关键词图
