@@ -21,7 +21,7 @@ object KeywordExtractor {
     */
   def keywordGraphConstruction(graphName: String,
                                window: Int,
-                               segWord: ListBuffer[String]): SingleGraph = {
+                               segWord: List[String]): SingleGraph = {
 
     val graph = new SingleGraph(graphName)
 
@@ -93,7 +93,7 @@ object KeywordExtractor {
     * @return
     */
 
-  def KeywordsExtract(graph: SingleGraph, keywordNum: Int, iterator: Int, df: Float) = {
+  def keywordsExtract(graph: SingleGraph, keywordNum: Int, iterator: Int, df: Float) = {
 
     val nodes = graph.getNodeSet.toArray.map(_.asInstanceOf[Node])
     val scoreMap = new mutable.HashMap[String, Float]
@@ -135,14 +135,14 @@ object KeywordExtractor {
     * @param df 阻尼系数
     * @return 关键词, 得分
     */
-  def run(graphName: String, window: Int, doc: ListBuffer[String],
-          keywordNum: Int, iterator: Int, df: Float): List[(String, Float)] = {
+  def keywordExtractor(graphName: String, window: Int, doc: List[String],
+                       keywordNum: Int, iterator: Int, df: Float): List[(String, Float)] = {
 
     // 生成关键词图
     val textGraph = keywordGraphConstruction(graphName, window, doc)
 
     // 提取关键词
-    val result = KeywordsExtract(textGraph, keywordNum, iterator, df)
+    val result = keywordsExtract(textGraph, keywordNum, iterator, df)
 
     result
   }
