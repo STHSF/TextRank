@@ -31,7 +31,9 @@ Mihalcea R, Tarau P. TextRank: Bringing order into texts[C]. Association for Com
 PageRank最开始用来计算网页的重要性。整个www可以看作一张有向图图，节点是网页。如果网页A存在到网页B的链接，那么有一条从网页A指向网页B的有向边。
 
 构造完图后，使用下面的公式：
+
 ![pr值计算公式](http://od6jpuxvb.bkt.clouddn.com/u6jaIzY.png)
+
 S(Vi)是网页i的中重要性（PR值）。d是阻尼系数，一般设置为0.85。In(Vi)是存在指向网页i的链接的网页集合。Out(Vj)是网页j中的链接存在的链接指向的网页的集合。|Out(Vj)|是集合中元素的个数。
 
 PageRank需要使用上面的公式多次迭代才能得到结果。初始时，可以设置每个网页的重要性为1。上面公式等号左边计算的结果是迭代后网页i的PR值，等号右边用到的PR值全是迭代前的。
