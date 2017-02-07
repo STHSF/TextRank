@@ -65,7 +65,7 @@ PageRank需要使用上面的公式多次迭代才能得到结果。初始时，
 
 **方法一、**
 
-&emsp; &emsp; &emsp; &emsp;IBM公司科学家 [H.P. Luhn] (http://www.di.ubi.pt/~jpaulo/competence/general/(1958)Luhn.pdf)
+&emsp; IBM公司科学家 [H.P. Luhn] (http://www.di.ubi.pt/~jpaulo/competence/general/(1958)Luhn.pdf)
 博士认为，文章的信息都包含在句子中，有些句子包含的信息多，有些句子包含的信息少。”自动摘要”就是要找出那些包含信息最多的句子。句子的信息量用”关键词”来衡量。如果包含的关键词越多，就说明这个句子越重要。Luhn提出用”簇”（cluster）表示关键词的聚集。所谓”簇”就是包含多个关键词的句子片段。Luhn的这种算法后来被简化，不再区分”簇”，只考虑句子包含的关键词。下面就是一个例子（采用伪码表示），只考虑关键词首先出现的句子。
 
 TextTeaser开源的代码一共有三个class，TextTeaser,Parser,Summarizer。
