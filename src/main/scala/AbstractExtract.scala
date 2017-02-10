@@ -19,6 +19,7 @@ class AbstractExtract (val graphName: String, val segWord: ListBuffer[ListBuffer
   }
 
   // 边的获取,通过计算句子的相似度
+  // 句子分词，词向量的平均和作为句向量，然后计算句向量的相似度
 
 
 
