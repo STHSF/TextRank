@@ -103,7 +103,7 @@ TextTeaser开源的代码一共有三个class, TextTeaser, Parser, Summarizer。
 
 **5、形成文摘：**根据字数或句子数要求，从候选文摘句中抽取句子组成文摘。
 
-## [TextRank的scala实现](https://github.com/STHSF/nlp/tree/develop/scala/nlpsuit/src/main/scala/com/kunyandata/nlpsuit/wordExtraction)
+## [关键词提取和摘要提取的scala实现](https://github.com/STHSF/nlp/tree/develop/scala/nlpsuit/src/main/scala/com/kunyandata/nlpsuit/wordExtraction)
 
 程序步骤：
 
