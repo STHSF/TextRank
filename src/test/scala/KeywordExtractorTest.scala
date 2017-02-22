@@ -3,7 +3,7 @@ import org.apache.spark.{SparkConf, SparkContext}
 /**
   * Created by li on 16/9/8.
   */
-object KeywordExtractorTest {
+object KeywordExtractorTest{
 
 
   def main(args: Array[String]) {

@@ -20,7 +20,7 @@ class ConstructTextGraph(val graphName: String, val winSize: Int, val segWord: L
 
   /**
     * 构建候选关键词图
- *
+    * 按照窗口大小截取
     * @return 候选关键词图
     */
   def constructGraph: SingleGraph = {
@@ -32,7 +32,7 @@ class ConstructTextGraph(val graphName: String, val winSize: Int, val segWord: L
       word => if (graph.getNode(word) == null) graph.addNode(word)
     )
 
-    // 导入分完词的数据,并通过设置的窗口截取
+    // 导入分完词的数据,并通过设置的窗口截取,截取的结果存为wordSeg[[1,2,3],[2,3,4],[3,4,5]]
     var wordSeg = new ListBuffer[(ListBuffer[(String)])]
 
     val num = segWord.size - winSize

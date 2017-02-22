@@ -68,7 +68,7 @@ PageRank需要使用上面的公式多次迭代才能得到结果。初始时，
 &emsp; IBM公司科学家 [H.P. Luhn] (http://www.di.ubi.pt/~jpaulo/competence/general/(1958)Luhn.pdf)
 博士认为，文章的信息都包含在句子中，有些句子包含的信息多，有些句子包含的信息少。”自动摘要”就是要找出那些包含信息最多的句子。句子的信息量用”关键词”来衡量。如果包含的关键词越多，就说明这个句子越重要。Luhn提出用”簇”（cluster）表示关键词的聚集。所谓”簇”就是包含多个关键词的句子片段。Luhn的这种算法后来被简化，不再区分”簇”，只考虑句子包含的关键词。下面就是一个例子（采用伪码表示），只考虑关键词首先出现的句子。
 
-TextTeaser开源的代码一共有三个class，TextTeaser,Parser,Summarizer。
+TextTeaser开源的代码一共有三个class, TextTeaser, Parser, Summarizer。
 
 **TextTeaser**，程序入口类。给定待摘要的文本和文本题目，输出文本摘要，默认是原文中最重要的5句话。
 **Summarizer**，生成摘要类。计算出每句话的分数，并按照得分做排序，然后按照原文中句子的顺序依次输出得分最高的5句话作为摘要。
@@ -78,7 +78,7 @@ TextTeaser开源的代码一共有三个class，TextTeaser,Parser,Summarizer。
 
 * *句子长度，*长度为20的句子为最理想的长度，依照距离这个长度来打分。
 * *句子位置，*根据句子在全文中的位置，给出分数。（巴尔宾认为一篇文章的第二句比第一句更重要，因为很多作家都习惯到第二句话引入关键点）备注：用段落效果会怎样？
-* *文章标题与文章内容的关系，*句子是否包含标题词，根据句子中包含标题词的多少来打分。
+* *文章标题与文章内容的关系，句子是否包含标题词，根据句子中包含标题词的多少来打分。
 * *句子关键词打分，*文本进行预处理之后，按照词频统计出排名前10的关键词，通过比较句子中包含关键词的情况，以及关键词分布的情况来打分（sbs，dbs两个函数）。
 
 **方法二、基于TextRank的自动文摘**
@@ -122,8 +122,3 @@ TextTeaser开源的代码一共有三个class，TextTeaser,Parser,Summarizer。
  * [Automatic Summarization](https://en.wikipedia.org/wiki/Automatic_summarization)
  * [TextRank](http://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf)
  * [PageRank](http://ilpubs.stanford.edu:8090/422/1/1999-66.pdf)
-
-
-
-
-
