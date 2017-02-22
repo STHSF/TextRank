@@ -1,3 +1,5 @@
+package AbstractExactor
+
 import breeze.linalg.Vector
 import org.apache.spark.mllib.feature.Word2VecModel
 import org.graphstream.graph.implementations.SingleGraph

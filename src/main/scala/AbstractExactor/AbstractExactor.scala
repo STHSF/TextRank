@@ -1,4 +1,6 @@
+package AbstractExactor
 
+import KeywordExactor.PropertyExtractor
 import org.apache.spark.mllib.feature.Word2VecModel
 import org.apache.spark.{SparkConf, SparkContext}
 

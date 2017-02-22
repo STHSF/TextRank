@@ -1,3 +1,5 @@
+package AbstractExactor
+
 import org.graphstream.graph.implementations.SingleGraph
 
 import scala.collection.mutable.ListBuffer

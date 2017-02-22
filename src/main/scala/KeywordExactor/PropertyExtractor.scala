@@ -1,5 +1,7 @@
-import org.graphstream.graph.{Edge, Node}
+package KeywordExactor
+
 import org.graphstream.graph.implementations.SingleGraph
+import org.graphstream.graph.{Edge, Node}
 
 import scala.collection.mutable
 

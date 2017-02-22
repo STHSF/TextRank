@@ -1,3 +1,5 @@
+package KeywordExactor
+
 import scala.collection.mutable.ListBuffer
 
 /**
