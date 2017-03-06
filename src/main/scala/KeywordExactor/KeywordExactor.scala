@@ -25,7 +25,7 @@ object KeywordExactor {
 
     // 输出提取的关键词
     val keywordExtractor = new PropertyExtractor(textGraph, keywordNum)
-    val result = keywordExtractor.extractKeywords(iterator, df)
+    val result = keywordExtractor.textrank(iterator, df)
 
     result
   }

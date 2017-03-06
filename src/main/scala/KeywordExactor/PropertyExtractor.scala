@@ -26,7 +26,7 @@ class PropertyExtractor(val graph: SingleGraph, val keywordNum: Int) {
     * @return 关键词和得分
     */
   // 使用textRank提取关键词
-  def extractKeywords(iterator: Int, df: Float) = {
+  def textrank(iterator: Int, df: Float) = {
 
     val nodes = graph.getNodeSet.toArray.map(_.asInstanceOf[Node])
     val scoreMap = new mutable.HashMap[String, Float]

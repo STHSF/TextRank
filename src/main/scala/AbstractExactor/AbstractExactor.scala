@@ -23,7 +23,7 @@ object AbstractExactor {
 
     // 输出提取的关键词
     val keywordExtractor = new PropertyExtractor(textGraph, keywordNum)
-    val result = keywordExtractor.extractKeywords(iterator, df)
+    val result = keywordExtractor.textrank(iterator, df)
 
     result
   }
@@ -39,10 +39,13 @@ object AbstractExactor {
 
     val dataIndex = data.zipWithIndex.map(x=>(x._2, x._1))
     dataIndex.foreach(x=> println(x._1, x._2.mkString("")))
-    val path = "hdfs://61.147.114.85:9000/home/liyu/word2vec/model2/10_100_5_102017-02-08-word2VectorModel/"
+//    val path = "hdfs://61.147.114.85:9000/home/liyu/word2vec/model2/10_100_5_102017-02-08-word2VectorModel"
+    val path = "/Users/li/workshop/DataSet/word2vec/model-10-100-20/2016-08-16-word2VectorModel/"
 
     val model = Word2VecModel.load(sc, path)
-    val result = run("hehe", 100, dataIndex, 100, 100, model, 0.9F)
+    val da = model.findSynonyms("共产党", 2)
+    da.foreach(x => println(x))
+    val result = run("jiji", 100, dataIndex, 2, 100, model, 0.9F)
     println(result)
 
 

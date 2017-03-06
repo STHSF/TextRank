@@ -44,6 +44,11 @@ class ConstructSentenceGraph(val graphName: String,
     docVectors
   }
 
+  /**
+    * 生成句子对
+    * @param textVec 句向量所组成的集合
+    * @return 句子对
+    */
   private def textVecPair(textVec: Map[Int, Vector[Double]]): Array[((Int, Vector[Double]), (Int, Vector[Double]))] = {
 
     val group = new ArrayBuffer[((Int, Vector[Double]), (Int, Vector[Double]))]
@@ -63,7 +68,12 @@ class ConstructSentenceGraph(val graphName: String,
     group.toArray
   }
 
-
+  /**
+    * 计算两个向量的余弦值
+    * @param vec1 向量1
+    * @param vec2 向量2
+    * @return 两个向量的余弦值
+    */
   private def cosineCorr(vec1: scala.collection.immutable.Vector[Double],
                  vec2: scala.collection.immutable.Vector[Double]): Double = {
 
@@ -111,7 +121,7 @@ class ConstructSentenceGraph(val graphName: String,
       sentence => if (graph.getNode(sentence._1) == null) graph.addNode(sentence._1.toString)
     )
 
-    // 构建关键词图的边
+    // 构建关键词图的边，如果两个节点的余弦相似度高于某一个阈值，则这两个节点之间存在一条边。
     edgeSet.toList.sortBy(x => x._3).map(x => (x._1, x._2))
       .foreach {
       edges =>
