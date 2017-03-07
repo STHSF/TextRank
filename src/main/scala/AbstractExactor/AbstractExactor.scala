@@ -9,21 +9,32 @@ import org.apache.spark.{SparkConf, SparkContext}
   */
 object AbstractExactor {
 
+  /**
+    * 关键句提取运行主程序。
+    * @param graphName 图名字
+    * @param vectorSize 词向量的长度
+    * @param sentenceList 句子组成的数据
+    * @param keySentenceNum 关键句的个数
+    * @param iterator textrank迭代的次数
+    * @param word2vecModel 词向量模型
+    * @param df df值
+    * @return
+    */
   def run(graphName: String,
           vectorSize: Int,
           sentenceList: Array[(Int, Array[String])],
-          keywordNum: Int,
+          keySentenceNum: Int,
           iterator: Int,
-          model: Word2VecModel,
+          word2vecModel: Word2VecModel,
           df: Float): List[(String, Float)] = {
 
     // 生成关键词图
-    val constructTextGraph = new ConstructSentenceGraph(graphName, vectorSize, sentenceList, model)
+    val constructTextGraph = new ConstructSentenceGraph(graphName, vectorSize, sentenceList, word2vecModel)
     val textGraph = constructTextGraph.constructGraph
 
     // 输出提取的关键词
-    val keywordExtractor = new PropertyExtractor(textGraph, keywordNum)
-    val result = keywordExtractor.textrank(iterator, df)
+    val keywordExtractor = new PropertyExtractor(textGraph, keySentenceNum)
+    val result = keywordExtractor.textrank(iterator, df).sortBy(_._1)
 
     result
   }
@@ -39,7 +50,7 @@ object AbstractExactor {
 
     val dataIndex = data.zipWithIndex.map(x=>(x._2, x._1))
     dataIndex.foreach(x=> println(x._1, x._2.mkString("")))
-//    val path = "hdfs://61.147.114.85:9000/home/liyu/word2vec/model2/10_100_5_102017-02-08-word2VectorModel"
+    // val path = "hdfs://61.147.114.85:9000/home/liyu/word2vec/model2/10_100_5_102017-02-08-word2VectorModel"
     val path = "/Users/li/workshop/DataSet/word2vec/model-10-100-20/2016-08-16-word2VectorModel/"
 
     val model = Word2VecModel.load(sc, path)
@@ -48,7 +59,11 @@ object AbstractExactor {
     val result = run("jiji", 100, dataIndex, 2, 100, model, 0.9F)
     println(result)
 
-
+    // 转换成句子
+    val index = result.map(x=> x._1)
+    for (elem <- index) {
+      print(dataIndex(elem.toInt)._2.mkString(""))
+    }
   }
 
 }
