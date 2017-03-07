@@ -1,5 +1,7 @@
-import org.graphstream.graph.{Edge, Node}
+package KeywordExactor
+
 import org.graphstream.graph.implementations.SingleGraph
+import org.graphstream.graph.{Edge, Node}
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
@@ -8,7 +10,7 @@ import scala.collection.mutable.ListBuffer
   * Created by li on 16/6/24.
   * 使用TextRank进行关键词提取
   */
-object KeywordExtractor {
+object KeywordExtracto {
 
   /**
     * 构建候选关键词图

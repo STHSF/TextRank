@@ -1,9 +1,11 @@
+package KeywordExactor
+
 import scala.collection.mutable.ListBuffer
 
 /**
   * Created by li on 16/6/24.
   */
-object TextRank {
+object KeywordExactor {
   /**
     *
     * @param graphName 图标识
@@ -23,7 +25,7 @@ object TextRank {
 
     // 输出提取的关键词
     val keywordExtractor = new PropertyExtractor(textGraph, keywordNum)
-    val result = keywordExtractor.extractKeywords(iterator, df)
+    val result = keywordExtractor.textrank(iterator, df)
 
     result
   }

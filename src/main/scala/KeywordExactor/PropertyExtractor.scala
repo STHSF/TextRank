@@ -1,5 +1,7 @@
-import org.graphstream.graph.{Edge, Node}
+package KeywordExactor
+
 import org.graphstream.graph.implementations.SingleGraph
+import org.graphstream.graph.{Edge, Node}
 
 import scala.collection.mutable
 
@@ -24,7 +26,7 @@ class PropertyExtractor(val graph: SingleGraph, val keywordNum: Int) {
     * @return 关键词和得分
     */
   // 使用textRank提取关键词
-  def extractKeywords(iterator: Int, df: Float) = {
+  def textrank(iterator: Int, df: Float) = {
 
     val nodes = graph.getNodeSet.toArray.map(_.asInstanceOf[Node])
     val scoreMap = new mutable.HashMap[String, Float]
