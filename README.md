@@ -133,3 +133,6 @@ TextTeaser开源的代码一共有三个class, TextTeaser, Parser, Summarizer。
  * [Automatic Summarization](https://en.wikipedia.org/wiki/Automatic_summarization)
  * [TextRank](http://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf)
  * [PageRank](http://ilpubs.stanford.edu:8090/422/1/1999-66.pdf)
+
+## 讨论区
+大家如果有疑问或者不同的看法可以在[讨论区](https://github.com/STHSF/TextRank/issues)一起讨论。
