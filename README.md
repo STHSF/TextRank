@@ -31,7 +31,7 @@ PageRank最开始用来计算网页的重要性。整个www可以看作一张有
 
 构造完图后，使用下面的公式：
 
-<center>![pr值计算公式](http://od6jpuxvb.bkt.clouddn.com/u6jaIzY.png)</center>
+<center>![pr值计算公式](https://github.com/STHSF/TextRank/tree/develop/images/u6jaIzY.png)</center>
 
 S(Vi)是网页i的中重要性（PR值）。d是阻尼系数，一般设置为0.85。In(Vi)是存在指向网页i的链接的网页集合。Out(Vj)是网页j中的链接存在的链接指向的网页的集合。|Out(Vj)|是集合中元素的个数。
 
