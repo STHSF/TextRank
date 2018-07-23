@@ -43,9 +43,9 @@ PageRank需要使用上面的公式多次迭代才能得到结果。初始时，
 
 * 1、把给定的文本T按照完整句子进行分割，即
 
-<center>![](http://od6jpuxvb.bkt.clouddn.com/GJJp0dC+Iu3nuQnt95RllXzy3V5AAAAABJRU5ErkJggg==.png)</center>
+<center>![](https://github.com/STHSF/TextRank/tree/develop/images/GJJp0dC+Iu3nuQnt95RllXzy3V5AAAAABJRU5ErkJggg==.png)</center>
 
-* 2、对于每个句子![](http://od6jpuxvb.bkt.clouddn.com/YtRBAzUQPjHVjQv3z50sjICMhubGwk1kF1YIBVaUZGBjBnYYp7gAEuCyBg9uzZ+BXgdBAecPHiRScnJ+LVkwdIc1BRURHtnAIBpDkImLrnzZtHO9cwkOSgFy9e0M4dcDDoGmgA9CATy1d+XhEAAAAASUVORK5CYII=.png)，进行分词和词性标注处理，并过滤掉停用词，只保留指定词性的单词，如名词、动词、形容词，即![](http://od6jpuxvb.bkt.clouddn.com/wdRhSHL8S992WFn2WXCWwAAAABJRU5ErkJggg==.png)，其中![](http://od6jpuxvb.bkt.clouddn.com/YsQNYxOAq4SkEuAwnof0KrAZnzZoFZKioqABbqIsXL6amA2EAj+EAEJBIFUFDdeoAAAAASUVORK5CYII=.png)是保留后的候选关键词。
+* 2、对于每个句子![](https://github.com/STHSF/TextRank/tree/develop/images/YtRBAzUQPjHVjQv3z50sjICMhubGwk1kF1YIBVaUZGBjBnYYp7gAEuCyBg9uzZ+BXgdBAecPHiRScnJ+LVkwdIc1BRURHtnAIBpDkImLrnzZtHO9cwkOSgFy9e0M4dcDDoGmgA9CATy1d+XhEAAAAASUVORK5CYII=.png)，进行分词和词性标注处理，并过滤掉停用词，只保留指定词性的单词，如名词、动词、形容词，即![](https://github.com/STHSF/TextRank/tree/develop/images/wdRhSHL8S992WFn2WXCWwAAAABJRU5ErkJggg==.png)，其中![](https://github.com/STHSF/TextRank/tree/develop/images/YsQNYxOAq4SkEuAwnof0KrAZnzZoFZKioqABbqIsXL6amA2EAj+EAEJBIFUFDdeoAAAAASUVORK5CYII=.png)是保留后的候选关键词。
 
 * 3、构建候选关键词图G = (V,E)，其中V为节点集，由（2）生成的候选关键词组成，然后采用共现关系（co-occurrence）构造任两点之间的边，两个节点之间存在边仅当它们对应的词汇在长度为K的窗口中共现，K表示窗口大小，即最多共现K个单词。
 
@@ -89,13 +89,13 @@ TextTeaser开源的代码一共有三个class, TextTeaser, Parser, Summarizer。
 
 **2、句子相似度计算：**构建图G中的边集E，基于句子间的内容覆盖率，给定两个句子，采用如下公式进行计算：
 
-<center>![](http://od6jpuxvb.bkt.clouddn.com/%E5%8F%A5%E5%AD%90%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.png)</center>
+<center>![](https://github.com/STHSF/TextRank/tree/develop/images/%E5%8F%A5%E5%AD%90%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.png)</center>
 
 若两个句子之间的相似度大于给定的阈值，就认为这两个句子语义相关并将它们连接起来，即边的权值：
 
 **3、句子权重计算**：根据公式
 
-<center>![](http://od6jpuxvb.bkt.clouddn.com/%E8%BE%B9%E7%9A%84%E6%9D%83%E5%80%BC%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.png)</center>
+<center>![](https://github.com/STHSF/TextRank/tree/develop/images/%E8%BE%B9%E7%9A%84%E6%9D%83%E5%80%BC%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.png)</center>
 
 ,迭代传播权重计算各句子的得分；
 
