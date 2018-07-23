@@ -33,8 +33,6 @@ PageRank最开始用来计算网页的重要性。整个www可以看作一张有
 
 ![pr值计算公式](https://github.com/STHSF/TextRank/tree/develop/images/u6jaIzY.png)
 
-<center>![pr值计算公式](https://github.com/STHSF/TextRank/tree/develop/images/u6jaIzY.png)</center>
-
 S(Vi)是网页i的中重要性（PR值）。d是阻尼系数，一般设置为0.85。In(Vi)是存在指向网页i的链接的网页集合。Out(Vj)是网页j中的链接存在的链接指向的网页的集合。|Out(Vj)|是集合中元素的个数。
 
 PageRank需要使用上面的公式多次迭代才能得到结果。初始时，可以设置每个网页的重要性为1。上面公式等号左边计算的结果是迭代后网页i的PR值，等号右边用到的PR值全是迭代前的。
@@ -45,7 +43,7 @@ PageRank需要使用上面的公式多次迭代才能得到结果。初始时，
 
 * 1、把给定的文本T按照完整句子进行分割，即
 
-<center>![](https://github.com/STHSF/TextRank/tree/develop/images/GJJp0dC+Iu3nuQnt95RllXzy3V5AAAAABJRU5ErkJggg==.png)</center>
+![](https://github.com/STHSF/TextRank/tree/develop/images/GJJp0dC+Iu3nuQnt95RllXzy3V5AAAAABJRU5ErkJggg==.png)
 
 * 2、对于每个句子![](https://github.com/STHSF/TextRank/tree/develop/images/YtRBAzUQPjHVjQv3z50sjICMhubGwk1kF1YIBVaUZGBjBnYYp7gAEuCyBg9uzZ+BXgdBAecPHiRScnJ+LVkwdIc1BRURHtnAIBpDkImLrnzZtHO9cwkOSgFy9e0M4dcDDoGmgA9CATy1d+XhEAAAAASUVORK5CYII=.png)，进行分词和词性标注处理，并过滤掉停用词，只保留指定词性的单词，如名词、动词、形容词，即![](https://github.com/STHSF/TextRank/tree/develop/images/wdRhSHL8S992WFn2WXCWwAAAABJRU5ErkJggg==.png)，其中![](https://github.com/STHSF/TextRank/tree/develop/images/YsQNYxOAq4SkEuAwnof0KrAZnzZoFZKioqABbqIsXL6amA2EAj+EAEJBIFUFDdeoAAAAASUVORK5CYII=.png)是保留后的候选关键词。
 
@@ -91,7 +89,7 @@ TextTeaser开源的代码一共有三个class, TextTeaser, Parser, Summarizer。
 
 **2、句子相似度计算：**构建图G中的边集E，基于句子间的内容覆盖率，给定两个句子，采用如下公式进行计算：
 
-<center>![](https://github.com/STHSF/TextRank/tree/develop/images/%E5%8F%A5%E5%AD%90%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.png)</center>
+![](https://github.com/STHSF/TextRank/tree/develop/images/%E5%8F%A5%E5%AD%90%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.png)
 
 若两个句子之间的相似度大于给定的阈值，就认为这两个句子语义相关并将它们连接起来，即边的权值：
 
