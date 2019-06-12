@@ -31,7 +31,7 @@ PageRank最开始用来计算网页的重要性。整个www可以看作一张有
 
 构造完图后，使用下面的公式：
 
-<center>![pr值计算公式](http://od6jpuxvb.bkt.clouddn.com/u6jaIzY.png)</center>
+ ![pr值计算公式](https://github.com/STHSF/TextRank/tree/develop/images/u6jaIzY.png)
 
 S(Vi)是网页i的中重要性（PR值）。d是阻尼系数，一般设置为0.85。In(Vi)是存在指向网页i的链接的网页集合。Out(Vj)是网页j中的链接存在的链接指向的网页的集合。|Out(Vj)|是集合中元素的个数。
 
@@ -43,9 +43,9 @@ PageRank需要使用上面的公式多次迭代才能得到结果。初始时，
 
 * 1、把给定的文本T按照完整句子进行分割，即
 
-<center>![](http://od6jpuxvb.bkt.clouddn.com/GJJp0dC+Iu3nuQnt95RllXzy3V5AAAAABJRU5ErkJggg==.png)</center>
+![textrank1](https://github.com/STHSF/TextRank/tree/develop/images/GJJp0dC+Iu3nuQnt95RllXzy3V5AAAAABJRU5ErkJggg==.png)
 
-* 2、对于每个句子![](http://od6jpuxvb.bkt.clouddn.com/YtRBAzUQPjHVjQv3z50sjICMhubGwk1kF1YIBVaUZGBjBnYYp7gAEuCyBg9uzZ+BXgdBAecPHiRScnJ+LVkwdIc1BRURHtnAIBpDkImLrnzZtHO9cwkOSgFy9e0M4dcDDoGmgA9CATy1d+XhEAAAAASUVORK5CYII=.png)，进行分词和词性标注处理，并过滤掉停用词，只保留指定词性的单词，如名词、动词、形容词，即![](http://od6jpuxvb.bkt.clouddn.com/wdRhSHL8S992WFn2WXCWwAAAABJRU5ErkJggg==.png)，其中![](http://od6jpuxvb.bkt.clouddn.com/YsQNYxOAq4SkEuAwnof0KrAZnzZoFZKioqABbqIsXL6amA2EAj+EAEJBIFUFDdeoAAAAASUVORK5CYII=.png)是保留后的候选关键词。
+* 2、对于每个句子![textrank2](https://github.com/STHSF/TextRank/tree/develop/images/YtRBAzUQPjHVjQv3z50sjICMhubGwk1kF1YIBVaUZGBjBnYYp7gAEuCyBg9uzZ+BXgdBAecPHiRScnJ+LVkwdIc1BRURHtnAIBpDkImLrnzZtHO9cwkOSgFy9e0M4dcDDoGmgA9CATy1d+XhEAAAAASUVORK5CYII=.png)，进行分词和词性标注处理，并过滤掉停用词，只保留指定词性的单词，如名词、动词、形容词，即![textrank3](https://github.com/STHSF/TextRank/tree/develop/images/wdRhSHL8S992WFn2WXCWwAAAABJRU5ErkJggg==.png)，其中![textrank4](https://github.com/STHSF/TextRank/tree/develop/images/YsQNYxOAq4SkEuAwnof0KrAZnzZoFZKioqABbqIsXL6amA2EAj+EAEJBIFUFDdeoAAAAASUVORK5CYII=.png)是保留后的候选关键词。
 
 * 3、构建候选关键词图G = (V,E)，其中V为节点集，由（2）生成的候选关键词组成，然后采用共现关系（co-occurrence）构造任两点之间的边，两个节点之间存在边仅当它们对应的词汇在长度为K的窗口中共现，K表示窗口大小，即最多共现K个单词。
 
@@ -65,14 +65,14 @@ PageRank需要使用上面的公式多次迭代才能得到结果。初始时，
 
 **方法一、**
 
-&emsp; IBM公司科学家 [H.P. Luhn] (http://www.di.ubi.pt/~jpaulo/competence/general/(1958)Luhn.pdf)
+&emsp; IBM公司科学家 [H.P. Luhn](http://www.di.ubi.pt/~jpaulo/competence/general/(1958)Luhn.pdf)
 博士认为，文章的信息都包含在句子中，有些句子包含的信息多，有些句子包含的信息少。”自动摘要”就是要找出那些包含信息最多的句子。句子的信息量用”关键词”来衡量。如果包含的关键词越多，就说明这个句子越重要。Luhn提出用”簇”（cluster）表示关键词的聚集。所谓”簇”就是包含多个关键词的句子片段。Luhn的这种算法后来被简化，不再区分”簇”，只考虑句子包含的关键词。下面就是一个例子（采用伪码表示），只考虑关键词首先出现的句子。
 
 TextTeaser开源的代码一共有三个class, TextTeaser, Parser, Summarizer。
 
-**TextTeaser**，程序入口类。给定待摘要的文本和文本题目，输出文本摘要，默认是原文中最重要的5句话。
-**Summarizer**，生成摘要类。计算出每句话的分数，并按照得分做排序，然后按照原文中句子的顺序依次输出得分最高的5句话作为摘要。
-**Parser**，文本解析类。对文本进行去除停用词、去除标点符号、分词、统计词频等一些预处理操作。
+**TextTeaser** ，程序入口类。给定待摘要的文本和文本题目，输出文本摘要，默认是原文中最重要的5句话。
+**Summarizer** ，生成摘要类。计算出每句话的分数，并按照得分做排序，然后按照原文中句子的顺序依次输出得分最高的5句话作为摘要。
+**Parser** ，文本解析类。对文本进行去除停用词、去除标点符号、分词、统计词频等一些预处理操作。
 
 其中打分模型分为四部分：
 
@@ -89,13 +89,13 @@ TextTeaser开源的代码一共有三个class, TextTeaser, Parser, Summarizer。
 
 **2、句子相似度计算：**构建图G中的边集E，基于句子间的内容覆盖率，给定两个句子，采用如下公式进行计算：
 
-<center>![](http://od6jpuxvb.bkt.clouddn.com/%E5%8F%A5%E5%AD%90%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.png)</center>
+![textrank5](https://github.com/STHSF/TextRank/tree/develop/images/%E5%8F%A5%E5%AD%90%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.png)
 
 若两个句子之间的相似度大于给定的阈值，就认为这两个句子语义相关并将它们连接起来，即边的权值：
 
 **3、句子权重计算**：根据公式
 
-<center>![](http://od6jpuxvb.bkt.clouddn.com/%E8%BE%B9%E7%9A%84%E6%9D%83%E5%80%BC%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.png)</center>
+![textrank6](https://github.com/STHSF/TextRank/tree/develop/images/%E8%BE%B9%E7%9A%84%E6%9D%83%E5%80%BC%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.png)
 
 ,迭代传播权重计算各句子的得分；
 

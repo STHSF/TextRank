@@ -1,4 +1,6 @@
-name := "textrank"
+mainClass in (Compile, packageBin) := Some("AbstractExtractor.AbstractExtractor")
+
+name := "AbstractExtractor"
 
 version := "1.0"
 
@@ -14,7 +16,7 @@ libraryDependencies += "org.apache.spark" % "spark-core_2.10" % "1.5.2" excludeA
 
 libraryDependencies += "org.apache.spark" % "spark-mllib_2.10" % "1.5.2" excludeAll ExclusionRule(organization = "javax.servlet")
 
-libraryDependencies += "mysql" % "mysql-connector-java" % "3.1.14" excludeAll ExclusionRule(organization = "javax.servlet")
+//libraryDependencies += "mysql" % "mysql-connector-java" % "3.1.14" excludeAll ExclusionRule(organization = "javax.servlet")
 
 libraryDependencies += "org.graphstream" % "gs-core" % "1.1.2" excludeAll ExclusionRule(organization = "javax.servlet")
 

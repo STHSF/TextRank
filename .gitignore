@@ -15,3 +15,12 @@ project/plugins/project/
 # Scala-IDE specific
 .scala_dependencies
 .worksheet
+.idea/
+project/project
+project/target/
+src/main/java/
+src/main/resources/
+src/main/scala-2.10/
+src/test/java/
+src/test/resources/
+src/test/scala-2.10/
