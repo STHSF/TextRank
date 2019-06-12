@@ -31,7 +31,7 @@ PageRank最开始用来计算网页的重要性。整个www可以看作一张有
 
 构造完图后，使用下面的公式：
 
- ![pr值计算公式](https://github.com/STHSF/TextRank/tree/develop/images/u6jaIzY.png)
+ ![pr值计算公式](https://github.com/STHSF/TextRank/tree/master/images/u6jaIzY.png)
 
 S(Vi)是网页i的中重要性（PR值）。d是阻尼系数，一般设置为0.85。In(Vi)是存在指向网页i的链接的网页集合。Out(Vj)是网页j中的链接存在的链接指向的网页的集合。|Out(Vj)|是集合中元素的个数。
 
@@ -43,9 +43,9 @@ PageRank需要使用上面的公式多次迭代才能得到结果。初始时，
 
 * 1、把给定的文本T按照完整句子进行分割，即
 
-![textrank1](https://github.com/STHSF/TextRank/tree/develop/images/GJJp0dC+Iu3nuQnt95RllXzy3V5AAAAABJRU5ErkJggg==.png)
+![textrank1](https://github.com/STHSF/TextRank/tree/master/images/GJJp0dC+Iu3nuQnt95RllXzy3V5AAAAABJRU5ErkJggg==.png)
 
-* 2、对于每个句子![textrank2](https://github.com/STHSF/TextRank/tree/develop/images/YtRBAzUQPjHVjQv3z50sjICMhubGwk1kF1YIBVaUZGBjBnYYp7gAEuCyBg9uzZ+BXgdBAecPHiRScnJ+LVkwdIc1BRURHtnAIBpDkImLrnzZtHO9cwkOSgFy9e0M4dcDDoGmgA9CATy1d+XhEAAAAASUVORK5CYII=.png)，进行分词和词性标注处理，并过滤掉停用词，只保留指定词性的单词，如名词、动词、形容词，即![textrank3](https://github.com/STHSF/TextRank/tree/develop/images/wdRhSHL8S992WFn2WXCWwAAAABJRU5ErkJggg==.png)，其中![textrank4](https://github.com/STHSF/TextRank/tree/develop/images/YsQNYxOAq4SkEuAwnof0KrAZnzZoFZKioqABbqIsXL6amA2EAj+EAEJBIFUFDdeoAAAAASUVORK5CYII=.png)是保留后的候选关键词。
+* 2、对于每个句子![textrank2](https://github.com/STHSF/TextRank/tree/master/images/YtRBAzUQPjHVjQv3z50sjICMhubGwk1kF1YIBVaUZGBjBnYYp7gAEuCyBg9uzZ+BXgdBAecPHiRScnJ+LVkwdIc1BRURHtnAIBpDkImLrnzZtHO9cwkOSgFy9e0M4dcDDoGmgA9CATy1d+XhEAAAAASUVORK5CYII=.png)，进行分词和词性标注处理，并过滤掉停用词，只保留指定词性的单词，如名词、动词、形容词，即![textrank3](https://github.com/STHSF/TextRank/tree/master/images/wdRhSHL8S992WFn2WXCWwAAAABJRU5ErkJggg==.png)，其中![textrank4](https://github.com/STHSF/TextRank/tree/master/images/YsQNYxOAq4SkEuAwnof0KrAZnzZoFZKioqABbqIsXL6amA2EAj+EAEJBIFUFDdeoAAAAASUVORK5CYII=.png)是保留后的候选关键词。
 
 * 3、构建候选关键词图G = (V,E)，其中V为节点集，由（2）生成的候选关键词组成，然后采用共现关系（co-occurrence）构造任两点之间的边，两个节点之间存在边仅当它们对应的词汇在长度为K的窗口中共现，K表示窗口大小，即最多共现K个单词。
 
@@ -89,13 +89,13 @@ TextTeaser开源的代码一共有三个class, TextTeaser, Parser, Summarizer。
 
 **2、句子相似度计算：**构建图G中的边集E，基于句子间的内容覆盖率，给定两个句子，采用如下公式进行计算：
 
-![textrank5](https://github.com/STHSF/TextRank/tree/develop/images/%E5%8F%A5%E5%AD%90%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.png)
+![textrank5](https://github.com/STHSF/TextRank/tree/master/images/%E5%8F%A5%E5%AD%90%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.png)
 
 若两个句子之间的相似度大于给定的阈值，就认为这两个句子语义相关并将它们连接起来，即边的权值：
 
 **3、句子权重计算**：根据公式
 
-![textrank6](https://github.com/STHSF/TextRank/tree/develop/images/%E8%BE%B9%E7%9A%84%E6%9D%83%E5%80%BC%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.png)
+![textrank6](https://github.com/STHSF/TextRank/tree/master/images/%E8%BE%B9%E7%9A%84%E6%9D%83%E5%80%BC%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.png)
 
 ,迭代传播权重计算各句子的得分；
 
@@ -103,7 +103,7 @@ TextTeaser开源的代码一共有三个class, TextTeaser, Parser, Summarizer。
 
 **5、形成文摘：**根据字数或句子数要求，从候选文摘句中抽取句子组成文摘。
 
-## [关键词提取和摘要提取的scala实现](https://github.com/STHSF/nlp/tree/develop/scala/nlpsuit/src/main/scala/com/kunyandata/nlpsuit/wordExtraction)
+## [关键词提取和摘要提取的scala实现](https://github.com/STHSF/nlp/tree/master/scala/nlpsuit/src/main/scala/com/kunyandata/nlpsuit/wordExtraction)
 
 ### 关键词提取程序步骤：
 
