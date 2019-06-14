@@ -41,19 +41,19 @@ PageRank需要使用上面的公式多次迭代才能得到结果。初始时，
 
 关键词抽取的任务就是从一段给定的文本中自动抽取出若干有意义的词语或词组。将原文本拆分为句子，在每个句子中过滤掉停用词（可选），并只保留指定词性的单词（可选）。由此可以得到句子的集合和单词的集合。TextRank算法是利用局部词汇之间关系（共现窗口）对后续关键词进行排序，直接从文本本身抽取。其主要步骤如下：
 
-* 1、把给定的文本T按照完整句子进行分割，即
+- 1、把给定的文本T按照完整句子进行分割，即
 
 ![textrank1](https://github.com/STHSF/TextRank/blob/master/images/GJJp0dC+Iu3nuQnt95RllXzy3V5AAAAABJRU5ErkJggg==.png)
 
-* 2、对于每个句子![textrank2](https://github.com/STHSF/TextRank/blob/master/images/YtRBAzUQPjHVjQv3z50sjICMhubGwk1kF1YIBVaUZGBjBnYYp7gAEuCyBg9uzZ+BXgdBAecPHiRScnJ+LVkwdIc1BRURHtnAIBpDkImLrnzZtHO9cwkOSgFy9e0M4dcDDoGmgA9CATy1d+XhEAAAAASUVORK5CYII=.png)，进行分词和词性标注处理，并过滤掉停用词，只保留指定词性的单词，如名词、动词、形容词，即![textrank3](https://github.com/STHSF/TextRank/blob/master/images/wdRhSHL8S992WFn2WXCWwAAAABJRU5ErkJggg==.png)，其中![textrank4](https://github.com/STHSF/TextRank/blob/master/images/YsQNYxOAq4SkEuAwnof0KrAZnzZoFZKioqABbqIsXL6amA2EAj+EAEJBIFUFDdeoAAAAASUVORK5CYII=.png)是保留后的候选关键词。
+- 2、对于每个句子![textrank2](https://github.com/STHSF/TextRank/blob/master/images/YtRBAzUQPjHVjQv3z50sjICMhubGwk1kF1YIBVaUZGBjBnYYp7gAEuCyBg9uzZ+BXgdBAecPHiRScnJ+LVkwdIc1BRURHtnAIBpDkImLrnzZtHO9cwkOSgFy9e0M4dcDDoGmgA9CATy1d+XhEAAAAASUVORK5CYII=.png)，进行分词和词性标注处理，并过滤掉停用词，只保留指定词性的单词，如名词、动词、形容词，即![textrank3](https://github.com/STHSF/TextRank/blob/master/images/wdRhSHL8S992WFn2WXCWwAAAABJRU5ErkJggg==.png)，其中![textrank4](https://github.com/STHSF/TextRank/blob/master/images/YsQNYxOAq4SkEuAwnof0KrAZnzZoFZKioqABbqIsXL6amA2EAj+EAEJBIFUFDdeoAAAAASUVORK5CYII=.png)是保留后的候选关键词。
 
-* 3、构建候选关键词图G = (V,E)，其中V为节点集，由（2）生成的候选关键词组成，然后采用共现关系（co-occurrence）构造任两点之间的边，两个节点之间存在边仅当它们对应的词汇在长度为K的窗口中共现，K表示窗口大小，即最多共现K个单词。
+- 3、构建候选关键词图G = (V,E)，其中V为节点集，由（2）生成的候选关键词组成，然后采用共现关系（co-occurrence）构造任两点之间的边，两个节点之间存在边仅当它们对应的词汇在长度为K的窗口中共现，K表示窗口大小，即最多共现K个单词。
 
-* 4、根据上面公式，迭代传播各节点的权重，直至收敛。
+- 4、根据上面公式，迭代传播各节点的权重，直至收敛。
 
-* 5、对节点权重进行倒序排序，从而得到最重要的T个单词，作为候选关键词。
+- 5、对节点权重进行倒序排序，从而得到最重要的T个单词，作为候选关键词。
 
-* 6、由5得到最重要的T个单词，在原始文本中进行标记，若形成相邻词组，则组合成多词关键词。
+- 6、由5得到最重要的T个单词，在原始文本中进行标记，若形成相邻词组，则组合成多词关键词。
 
 ### 使用TextRank提取关键短语
 
@@ -70,69 +70,69 @@ PageRank需要使用上面的公式多次迭代才能得到结果。初始时，
 
 TextTeaser开源的代码一共有三个class, TextTeaser, Parser, Summarizer。
 
-**TextTeaser** ，程序入口类。给定待摘要的文本和文本题目，输出文本摘要，默认是原文中最重要的5句话。
-**Summarizer** ，生成摘要类。计算出每句话的分数，并按照得分做排序，然后按照原文中句子的顺序依次输出得分最高的5句话作为摘要。
-**Parser** ，文本解析类。对文本进行去除停用词、去除标点符号、分词、统计词频等一些预处理操作。
+***TextTeaser*** ，程序入口类。给定待摘要的文本和文本题目，输出文本摘要，默认是原文中最重要的5句话。
+***Summarizer*** ，生成摘要类。计算出每句话的分数，并按照得分做排序，然后按照原文中句子的顺序依次输出得分最高的5句话作为摘要。
+***Parser*** ，文本解析类。对文本进行去除停用词、去除标点符号、分词、统计词频等一些预处理操作。
 
 其中打分模型分为四部分：
 
-* *句子长度，*长度为20的句子为最理想的长度，依照距离这个长度来打分。
-* *句子位置，*根据句子在全文中的位置，给出分数。（巴尔宾认为一篇文章的第二句比第一句更重要，因为很多作家都习惯到第二句话引入关键点）备注：用段落效果会怎样？
-* *文章标题与文章内容的关系，句子是否包含标题词，根据句子中包含标题词的多少来打分。
-* *句子关键词打分，*文本进行预处理之后，按照词频统计出排名前10的关键词，通过比较句子中包含关键词的情况，以及关键词分布的情况来打分（sbs，dbs两个函数）。
+***句子长度，***长度为20的句子为最理想的长度，依照距离这个长度来打分。
+***句子位置，***根据句子在全文中的位置，给出分数。（巴尔宾认为一篇文章的第二句比第一句更重要，因为很多作家都习惯到第二句话引入关键点）备注：用段落效果会怎样？
+***文章标题与文章内容的关系，***句子是否包含标题词，根据句子中包含标题词的多少来打分。
+***句子关键词打分，***文本进行预处理之后，按照词频统计出排名前10的关键词，通过比较句子中包含关键词的情况，以及关键词分布的情况来打分（sbs，dbs两个函数）。
 
-**方法二、基于TextRank的自动文摘**
+***方法二、基于TextRank的自动文摘***
 
 基于TextRank的自动文摘属于自动摘录，通过选取文本中重要度较高的句子形成文摘，其主要步骤如下：
 
-**1、预处理：**将输入的文本或文本集的内容分割成句子得，构建图G =（V,E），其中V为句子集，对句子进行分词、去除停止词，得，其中是保留后的候选关键词。
+***1、预处理：***将输入的文本或文本集的内容分割成句子得，构建图G =（V,E），其中V为句子集，对句子进行分词、去除停止词，得，其中是保留后的候选关键词。
 
-**2、句子相似度计算：**构建图G中的边集E，基于句子间的内容覆盖率，给定两个句子，采用如下公式进行计算：
+***2、句子相似度计算：***构建图G中的边集E，基于句子间的内容覆盖率，给定两个句子，采用如下公式进行计算：
 
 ![textrank5](https://github.com/STHSF/TextRank/blob/master/images/%E5%8F%A5%E5%AD%90%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.png)
 
 若两个句子之间的相似度大于给定的阈值，就认为这两个句子语义相关并将它们连接起来，即边的权值：
 
-**3、句子权重计算**：根据公式
+***3、句子权重计算***：根据公式
 
 ![textrank6](https://github.com/STHSF/TextRank/blob/master/images/%E8%BE%B9%E7%9A%84%E6%9D%83%E5%80%BC%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.png)
 
 ,迭代传播权重计算各句子的得分；
 
-**4、抽取文摘句：**将3得到的句子得分进行倒序排序，抽取重要度最高的T个句子作为候选文摘句。
+***4、抽取文摘句：***将3得到的句子得分进行倒序排序，抽取重要度最高的T个句子作为候选文摘句。
 
-**5、形成文摘：**根据字数或句子数要求，从候选文摘句中抽取句子组成文摘。
+***5、形成文摘：***根据字数或句子数要求，从候选文摘句中抽取句子组成文摘。
 
 ## [关键词提取和摘要提取的scala实现](https://github.com/STHSF/nlp/blob/master/scala/nlpsuit/src/main/scala/com/kunyandata/nlpsuit/wordExtraction)
 
 ### 关键词提取程序步骤：
 
-1、**文章分词：** 对每一篇文章进行分词，分词系统主要由坤雁分词系统、ansj分词，结巴分词等。
+1、***文章分词：*** 对每一篇文章进行分词，分词系统主要由坤雁分词系统、ansj分词，结巴分词等。
 
-2、**分词结果数据清洗：** 主要包括去停用词、去除符号字母数字等。
+2、***分词结果数据清洗：*** 主要包括去停用词、去除符号字母数字等。
 
-3、**构建候选关键词图：** 根据设定的词语选择窗口截取文本的分词结果，将每个词语作为候选关键词图的节点，截取的每一段文本中的词语作为相邻的边，以此构建候选关键词图。
+3、***构建候选关键词图：*** 根据设定的词语选择窗口截取文本的分词结果，将每个词语作为候选关键词图的节点，截取的每一段文本中的词语作为相邻的边，以此构建候选关键词图。
 
-4、**关键词提取：** 利用pagerank思想循环迭代候选关键词图，
+4、***关键词提取：*** 利用pagerank思想循环迭代候选关键词图，
 
 ### 摘要提取的程序步骤：
 
-1、**文章分词，切句：** 对每一篇文章进行分词，分词系统主要由坤雁分词系统、ansj分词，结巴分词等。
+1、***文章分词，切句：*** 对每一篇文章进行分词，分词系统主要由坤雁分词系统、ansj分词，结巴分词等。
 
-2、**分词结果数据清洗：** 主要包括去停用词、去除符号字母数字等。
+2、***分词结果数据清洗：*** 主要包括去停用词、去除符号字母数字等。
 
-3、**构建候选关键词图：** 根据短句的相似度构建句子的边，将每个句子作为候选关键词图的节点，截取的每一段文本中的词语作为相邻的边，以此构建候选关键词图。
+3、***构建候选关键词图：*** 根据短句的相似度构建句子的边，将每个句子作为候选关键词图的节点，截取的每一段文本中的词语作为相邻的边，以此构建候选关键词图。
 
-4、**关键词提取：** 利用pagerank思想循环迭代候选关键词图，
+4、***关键词提取：*** 利用pagerank思想循环迭代候选关键词图，
 
 
 
 ## 参考文献
- * David Adamo: [TextRank](https://github.com/davidadamojr/TextRank)
- * [The Automatic Creation of Literature Abstracts](http://www.di.ubi.pt/~jpaulo/competence/general/(1958)Luhn.pdf)
- * [Automatic Summarization](https://en.wikipedia.org/wiki/Automatic_summarization)
- * [TextRank](http://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf)
- * [PageRank](http://ilpubs.stanford.edu:8090/422/1/1999-66.pdf)
+ - David Adamo: [TextRank](https://github.com/davidadamojr/TextRank)
+ - [The Automatic Creation of Literature Abstracts](http://www.di.ubi.pt/~jpaulo/competence/general/(1958)Luhn.pdf)
+ - [Automatic Summarization](https://en.wikipedia.org/wiki/Automatic_summarization)
+ - [TextRank](http://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf)
+ - [PageRank](http://ilpubs.stanford.edu:8090/422/1/1999-66.pdf)
 
 ## 讨论区
 大家如果有疑问或者不同的看法可以在[讨论区](https://github.com/STHSF/TextRank/issues)一起讨论。
