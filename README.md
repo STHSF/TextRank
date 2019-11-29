@@ -16,22 +16,15 @@
 
 * **基于整数规划：** 将文摘问题转为整数线性规划，求全局最优解。
 
-## TextRank算法
+## PageRank
 
-TextRank 算法是一种用于文本的基于图的排序算法。其基本思想来源于谷歌的 PageRank算法, 通过把文本分割成若干组成单元(单词、句子)并建立图模型, 利用投票机制对文本中的重要成分进行排序, 仅利用单篇文档本身的信息即可实现关键词提取、文摘。和 LDA、HMM 等模型不同, TextRank不需要事先对多篇文档进行学习训练, 因其简洁有效而得到广泛应用。
-
-最早提出[TextRank](http://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf)的论文是：
-Mihalcea R, Tarau P. TextRank: Bringing order into texts[C]. Association for Computational Linguistics, 2004.
-
-我们先从PageRank讲起。
-
-### PageRank
+要了解TextRank的基本原理, 我们先从要知道PageRank的计算过程。
 
 PageRank最开始用来计算网页的重要性。整个www可以看作一张有向图图，节点是网页。如果网页A存在到网页B的链接，那么有一条从网页A指向网页B的有向边。
 
 构造完图后，使用下面的公式：
 
- ![pr值计算公式](https://github.com/STHSF/TextRank/blob/master/images/u6jaIzY.png)
+![pr值计算公式](https://github.com/STHSF/TextRank/blob/master/images/u6jaIzY.png)
 
 - S(Vi)是网页i的中重要性（PR值）。
 - d是阻尼系数，一般设置为0.85。
@@ -39,6 +32,13 @@ PageRank最开始用来计算网页的重要性。整个www可以看作一张有
 - Out(Vj)是网页j中的链接存在的链接指向的网页的集合。|Out(Vj)|是集合中元素的个数。
 
 PageRank需要使用上面的公式多次迭代才能得到结果。初始时，可以设置每个网页的重要性为1。上面公式等号左边计算的结果是迭代后网页i的PR值，等号右边用到的PR值全是迭代前的。
+
+## TextRank算法
+
+TextRank 算法是一种用于文本的基于图的排序算法。其基本思想来源于谷歌的 PageRank算法, 通过把文本分割成若干组成单元(单词、句子)并建立图模型, 利用投票机制对文本中的重要成分进行排序, 仅利用单篇文档本身的信息即可实现关键词提取、文摘。和 LDA、HMM 等模型不同, TextRank不需要事先对多篇文档进行学习训练, 因其简洁有效而得到广泛应用。
+
+最早提出[TextRank](http://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf)的论文是：
+Mihalcea R, Tarau P. TextRank: Bringing order into texts[C]. Association for Computational Linguistics, 2004.
 
 ### 使用TextRank提取关键字
 
