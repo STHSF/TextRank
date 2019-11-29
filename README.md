@@ -113,8 +113,6 @@ TextTeaser开源的代码一共有三个class, TextTeaser, Parser, Summarizer。
 
 ***5、形成文摘：***根据字数或句子数要求，从候选文摘句中抽取句子组成文摘。
 
-## [关键词提取和摘要提取的scala实现](https://github.com/STHSF/nlp/blob/master/scala/nlpsuit/src/main/scala/com/kunyandata/nlpsuit/wordExtraction)
-
 #### 摘要提取demo
 ```
 文章样例：
@@ -148,6 +146,8 @@ ps 文章预先已经提前分词完毕。
 
 ## 总结
 PageRank本身非常巧妙了, TextRank更是巧妙的将PageRank应用到NLP中的词排序或句子排序上面, 比如关键词抽取, 文本摘要等.
+
+## [关键词提取和摘要提取的scala实现](https://github.com/STHSF/nlp/blob/master/scala/nlpsuit/src/main/scala/com/kunyandata/nlpsuit/wordExtraction)
 
 ## 参考文献
  - David Adamo: [TextRank](https://github.com/davidadamojr/TextRank)
