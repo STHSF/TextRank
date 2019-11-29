@@ -125,7 +125,8 @@ TextTeaser开源的代码一共有三个class, TextTeaser, Parser, Summarizer。
 
 4、***关键词提取：*** 利用pagerank思想循环迭代候选关键词图，
 
-
+## 总结
+PageRank本身非常巧妙了, TextRank更是巧妙的将PageRank应用到NLP中的词排序或句子排序上面, 比如关键词抽取, 文本摘要等.
 
 ## 参考文献
  - David Adamo: [TextRank](https://github.com/davidadamojr/TextRank)
