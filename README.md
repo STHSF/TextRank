@@ -26,7 +26,7 @@ PageRank最开始用来计算网页的重要性。整个www可以看作一张有
 
 ![pr值计算公式](https://github.com/STHSF/TextRank/blob/master/images/u6jaIzY.png)
 
-![pr值计算公式](http://latex.codecogs.com/gif.latex?S(V_i)=(1-d)+d*\sum_{j\in In(V_i)}\frac{1}{|Out(V_j)|}S(V_j))
+![pr值计算公式](http://latex.codecogs.com/gif.latex?\S(V_i)=(1-d)+d*\sum_{j\in In(V_i)}\frac{1}{|Out(V_j)|}S(V_j))
 
 ![](http://latex.codecogs.com/gif.latex?\\sigma=\sqrt{\frac{1}{n}{\sum_{k=1}^n(x_i-\bar{x})^2}})
 
@@ -52,7 +52,7 @@ Mihalcea R, Tarau P. TextRank: Bringing order into texts[C]. Association for Com
 
 ![textrank1](https://github.com/STHSF/TextRank/blob/master/images/GJJp0dC+Iu3nuQnt95RllXzy3V5AAAAABJRU5ErkJggg==.png)
 
-![](http://latex.codecogs.com/gif.latex?T=[S_i, S_2, ...., S_m])
+![](http://latex.codecogs.com/gif.latex?\T=[S_i, S_2, ...., S_m])
 
 - 2、对于每个句子![textrank2](https://github.com/STHSF/TextRank/blob/master/images/YtRBAzUQPjHVjQv3z50sjICMhubGwk1kF1YIBVaUZGBjBnYYp7gAEuCyBg9uzZ+BXgdBAecPHiRScnJ+LVkwdIc1BRURHtnAIBpDkImLrnzZtHO9cwkOSgFy9e0M4dcDDoGmgA9CATy1d+XhEAAAAASUVORK5CYII=.png)，
 
