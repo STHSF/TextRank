@@ -25,7 +25,8 @@ PageRank最开始用来计算网页的重要性。整个www可以看作一张有
 构造完图后，使用下面的公式：
 
 ![pr值计算公式](https://github.com/STHSF/TextRank/blob/master/images/u6jaIzY.png)
-![pr值计算公式](http://latex.codecogs.com/gif.latex? S(V_i) = (1-d) + d* \sum_{j\in (V_i)} \frac{1}{|Out(V_j)|}S(v_j))
+
+![pr值计算公式](http://latex.codecogs.com/gif.latex? S(V_i) = (1-d) + d* \sum_{j\in (V_i)} \frac{1}{|Out(V_j)|}S(V_j))
 
 - S(Vi)是网页i的中重要性（PR值）。
 - d是阻尼系数，一般设置为0.85。
@@ -49,13 +50,24 @@ Mihalcea R, Tarau P. TextRank: Bringing order into texts[C]. Association for Com
 
 ![textrank1](https://github.com/STHSF/TextRank/blob/master/images/GJJp0dC+Iu3nuQnt95RllXzy3V5AAAAABJRU5ErkJggg==.png)
 
-![](http://latex.codecogs.com/gif.latex? T=[S_i, S_2, ...., S_m])
+![textrank1](http://latex.codecogs.com/gif.latex? T=[S_i, S_2, ...., S_m])
 
-- 2、对于每个句子![textrank2](https://github.com/STHSF/TextRank/blob/master/images/YtRBAzUQPjHVjQv3z50sjICMhubGwk1kF1YIBVaUZGBjBnYYp7gAEuCyBg9uzZ+BXgdBAecPHiRScnJ+LVkwdIc1BRURHtnAIBpDkImLrnzZtHO9cwkOSgFy9e0M4dcDDoGmgA9CATy1d+XhEAAAAASUVORK5CYII=.png)，
+- 2、对于每个句子
+![textrank2](https://github.com/STHSF/TextRank/blob/master/images/YtRBAzUQPjHVjQv3z50sjICMhubGwk1kF1YIBVaUZGBjBnYYp7gAEuCyBg9uzZ+BXgdBAecPHiRScnJ+LVkwdIc1BRURHtnAIBpDkImLrnzZtHO9cwkOSgFy9e0M4dcDDoGmgA9CATy1d+XhEAAAAASUVORK5CYII=.png)，
 
-![](http://latex.codecogs.com/gif.latex? y=x+b_i)
+![textrank2](http://latex.codecogs.com/gif.latex? S_i\in T)
 
-进行分词和词性标注处理，并过滤掉停用词，只保留指定词性的单词，如名词、动词、形容词，即![textrank3](https://github.com/STHSF/TextRank/blob/master/images/wdRhSHL8S992WFn2WXCWwAAAABJRU5ErkJggg==.png)，其中![textrank4](https://github.com/STHSF/TextRank/blob/master/images/YsQNYxOAq4SkEuAwnof0KrAZnzZoFZKioqABbqIsXL6amA2EAj+EAEJBIFUFDdeoAAAAASUVORK5CYII=.png)是保留后的候选关键词。
+进行分词和词性标注处理，并过滤掉停用词，只保留指定词性的单词，如名词、动词、形容词，即
+![textrank3](https://github.com/STHSF/TextRank/blob/master/images/wdRhSHL8S992WFn2WXCWwAAAABJRU5ErkJggg==.png)
+
+![textrank3](http://latex.codecogs.com/gif.latex? S_i=[t_{i, 1}, t_{i, 2}, ....,t_{i, n}])
+
+，其中
+![textrank4](https://github.com/STHSF/TextRank/blob/master/images/YsQNYxOAq4SkEuAwnof0KrAZnzZoFZKioqABbqIsXL6amA2EAj+EAEJBIFUFDdeoAAAAASUVORK5CYII=.png)
+
+![textrank4](http://latex.codecogs.com/gif.latex? t_{i, j} \in S_j)
+
+是保留后的候选关键词。
 
 - 3、构建候选关键词图G = (V,E)，其中V为节点集，由（2）生成的候选关键词组成，然后采用共现关系（co-occurrence）构造任两点之间的边，两个节点之间存在边仅当它们对应的词汇在长度为K的窗口中共现，K表示窗口大小，即最多共现K个单词。
 
@@ -111,11 +123,16 @@ TextTeaser开源的代码一共有三个class, TextTeaser, Parser, Summarizer。
 
 ![textrank5](https://github.com/STHSF/TextRank/blob/master/images/%E5%8F%A5%E5%AD%90%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.png)
 
+![textrank2](http://latex.codecogs.com/gif.latex? Similarity(S_i, S_j) = \frac{|{t_k}|}{})
+
 若两个句子之间的相似度大于给定的阈值，就认为这两个句子语义相关并将它们连接起来，即边的权值：
 
 ***3、句子权重计算***：根据公式
 
 ![textrank6](https://github.com/STHSF/TextRank/blob/master/images/%E8%BE%B9%E7%9A%84%E6%9D%83%E5%80%BC%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.png)
+
+![textrank2](http://latex.codecogs.com/gif.latex? w_{i,j}=Similarity(S_i, S_j))
+
 
 ,迭代传播权重计算各句子的得分；
 
