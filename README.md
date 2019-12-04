@@ -48,11 +48,11 @@ Mihalcea R, Tarau P. TextRank: Bringing order into texts[C]. Association for Com
 
 ![textrank1](https://github.com/STHSF/TextRank/blob/master/images/GJJp0dC+Iu3nuQnt95RllXzy3V5AAAAABJRU5ErkJggg==.png)
 
-![](http://latex.codecogs.com/gif.latex? \T=[S_i, S_2, ...., S_m])
+![](http://latex.codecogs.com/gif.latex?\\T=[S_i, S_2, ...., S_m])
 
 - 2、对于每个句子![textrank2](https://github.com/STHSF/TextRank/blob/master/images/YtRBAzUQPjHVjQv3z50sjICMhubGwk1kF1YIBVaUZGBjBnYYp7gAEuCyBg9uzZ+BXgdBAecPHiRScnJ+LVkwdIc1BRURHtnAIBpDkImLrnzZtHO9cwkOSgFy9e0M4dcDDoGmgA9CATy1d+XhEAAAAASUVORK5CYII=.png)，
 
-![](http://latex.codecogs.com/gif.latex?)
+![](http://latex.codecogs.com/gif.latex? y=x+b_i)
 
 进行分词和词性标注处理，并过滤掉停用词，只保留指定词性的单词，如名词、动词、形容词，即![textrank3](https://github.com/STHSF/TextRank/blob/master/images/wdRhSHL8S992WFn2WXCWwAAAABJRU5ErkJggg==.png)，其中![textrank4](https://github.com/STHSF/TextRank/blob/master/images/YsQNYxOAq4SkEuAwnof0KrAZnzZoFZKioqABbqIsXL6amA2EAj+EAEJBIFUFDdeoAAAAASUVORK5CYII=.png)是保留后的候选关键词。
 
