@@ -48,7 +48,7 @@ Mihalcea R, Tarau P. TextRank: Bringing order into texts[C]. Association for Com
 
 ![textrank1](https://github.com/STHSF/TextRank/blob/master/images/GJJp0dC+Iu3nuQnt95RllXzy3V5AAAAABJRU5ErkJggg==.png)
 
-![](http://latex.codecogs.com/gif.latex?\T=[S_i, S_2, ...., S_m])
+![](http://latex.codecogs.com/gif.latex? \T=[S_i, S_2, ...., S_m])
 
 - 2、对于每个句子![textrank2](https://github.com/STHSF/TextRank/blob/master/images/YtRBAzUQPjHVjQv3z50sjICMhubGwk1kF1YIBVaUZGBjBnYYp7gAEuCyBg9uzZ+BXgdBAecPHiRScnJ+LVkwdIc1BRURHtnAIBpDkImLrnzZtHO9cwkOSgFy9e0M4dcDDoGmgA9CATy1d+XhEAAAAASUVORK5CYII=.png)，
 
