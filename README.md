@@ -123,7 +123,7 @@ TextTeaser开源的代码一共有三个class, TextTeaser, Parser, Summarizer。
 
 ![textrank5](https://github.com/STHSF/TextRank/blob/master/images/%E5%8F%A5%E5%AD%90%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.png)
 
-![textrank2](http://latex.codecogs.com/gif.latex? Similarity(S_i, S_j) = \frac{|{t_k}|}{})
+![textrank2](http://latex.codecogs.com/gif.latex? Similarity(S_i, S_j) = \frac{\|{t_k}\|}{log(\|S_i\|)+log(\|S_j\|)})
 
 若两个句子之间的相似度大于给定的阈值，就认为这两个句子语义相关并将它们连接起来，即边的权值：
 
