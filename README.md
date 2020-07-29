@@ -1,5 +1,5 @@
 ## 关于自动文摘
-![](https://img.shields.io/codeclimate/coverage/STHSF/TextRank)
+![](https://img.shields.io/STHSF/coverage/STHSF/TextRank)
 
 利用计算机将大量的文本进行处理，产生简洁、精炼内容的过程就是文本摘要，人们可通过阅读摘要来把握文本主要内容，这不仅大大节省时间，更提高阅读效率。但人工摘要耗时又耗力，已不能满足日益增长的信息需求，因此借助计算机进行文本处理的自动文摘应运而生。近年来，自动文摘、信息检索、信息过滤、机器识别、等研究已成为了人们关注的热点。
 
